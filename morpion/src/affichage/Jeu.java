@@ -3,6 +3,7 @@ package affichage;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.Vector;
 import javax.swing.JPanel;
 
 public class Jeu extends JPanel {
@@ -41,7 +42,21 @@ public class Jeu extends JPanel {
             }
         }
     }
-    public static Case[] caseLibre(){
+    public Case[] caseLibre(){
         
+        Case[][] all=this.getCases();
+        Vector<Case> vectCase=new Vector<>();
+        for(int i=0;i<all.length;i++){
+            for(int j=0;j<all[i].length;j++){
+                if(all[i][j].getImageX().getDescription().equals(".png")){
+                    vectCase.add(all[i][j]);
+                }
+            }
+        }
+        Case[] vide=new Case[vectCase.size()];
+        for(int i=0;i<vide.length;i++){
+            vide[i]=vectCase.get(i);
+        }
+        return vide;
     }
 }
